@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 project(SolveAXXB)
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 #set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_HOME_DIRECTORY}/bin)
 
 
@@ -19,6 +19,7 @@ endif (EIGEN_FOUND)
 
 
 include_directories(
+        axxb
   ${EIGEN_INCLUDE_DIRS}
 )
 
@@ -27,6 +28,9 @@ add_library(SolveAXXB SHARED ${SRC})
 target_link_libraries(SolveAXXB
   ${EIGEN_LIBRARIES}
 )
+
+add_executable(Opti2IMU test/main.cpp)
+target_link_libraries(Opti2IMU SolveAXXB)
 
 install(TARGETS SolveAXXB
   LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib

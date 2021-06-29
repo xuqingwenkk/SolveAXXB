@@ -28,7 +28,7 @@ Pose ExtendedAXXBEliLambdaSVDSolver::SolveX()
   }
 
   Eigen::JacobiSVD<Eigen::MatrixXd> svd( m, Eigen::ComputeFullV | Eigen::ComputeFullU );
-  CHECK(svd.computeV())<<"fail to compute V";
+//  CHECK(svd.computeV())<<"fail to compute V";
 
   Eigen::Matrix3d R_alpha;
   R_alpha.row(0) = svd.matrixV().block<3,1>(0,11).transpose();
